@@ -1,0 +1,45 @@
+<div class="container">
+  <h2>Listado de Empleados</h2>
+  
+  <form (ngSubmit)="agregarEmpleado()" class="formulario">
+    <div class="form-group">
+      <input type="number" [(ngModel)]="nuevoEmpleado.numEmpleado" name="numEmpleado" placeholder="Número de Empleado" required>
+      <input type="text" [(ngModel)]="nuevoEmpleado.nombre" name="nombre" placeholder="Nombre" required>
+    </div>
+    <div class="form-group">
+      <input type="email" [(ngModel)]="nuevoEmpleado.correo" name="correo" placeholder="Correo" required>
+      <input type="tel" [(ngModel)]="nuevoEmpleado.telefono" name="telefono" placeholder="Teléfono">
+    </div>
+    <div class="form-group">
+      <input type="date" [(ngModel)]="nuevoEmpleado.fechaNacimiento" name="fechaNacimiento" placeholder="Fecha de Nacimiento">
+    </div>
+    <div class="form-group">
+      <label>
+        <input type="radio" [(ngModel)]="nuevoEmpleado.sexo" name="sexo" value="Masculino"> Masculino
+      </label>
+      <label>
+        <input type="radio" [(ngModel)]="nuevoEmpleado.sexo" name="sexo" value="Femenino"> Femenino
+      </label>
+    </div>
+    <button type="submit" class="btn-agregar">Agregar Empleado</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>#</th><th>Nombre</th><th>Correo</th><th>Teléfono</th><th>Fecha</th><th>Sexo</th><th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let emp of empleados; let i = index">
+        <td>{{emp.numEmpleado}}</td>
+        <td>{{emp.nombre}}</td>
+        <td>{{emp.correo}}</td>
+        <td>{{emp.telefono}}</td>
+        <td>{{emp.fechaNacimiento}}</td>
+        <td>{{emp.sexo}}</td>
+        <td><button (click)="eliminarEmpleado(i)" class="btn-eliminar">Eliminar</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
